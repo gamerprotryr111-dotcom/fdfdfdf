@@ -1,0 +1,157 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Storm СНГ: хаб игроков</title>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#06030d;--p:#110a20;--p2:#1a0f33;--bd:#2e1a58;--v:#8b5cf6;--v2:#c4a1ff;--t:#ece6fb;--m:#9a8cbf;--g:#f2c14e;--ok:#4ade80;--no:#f87171;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(800px 420px at 80% -8%,#2b0f68 0,transparent 62%),var(--bg);color:var(--t);font:15px/1.5 Onest,"Segoe UI",Arial,sans-serif;min-height:100vh}
+h1,h2,h3{font-family:Unbounded,Onest,Arial,sans-serif;margin:0}
+header{padding:22px 16px 6px;max-width:1100px;margin:auto}h1{font-size:clamp(22px,4.5vw,38px);font-weight:800;letter-spacing:-.5px}h1 b{color:var(--v2);text-shadow:0 0 24px #8b5cf6}
+header p{color:var(--m);margin:4px 0 0}
+nav{display:flex;gap:6px;overflow-x:auto;max-width:1100px;margin:14px auto 0;padding:0 16px}
+nav button{white-space:nowrap;background:none;border:1px solid var(--bd);color:var(--m);padding:8px 14px;border-radius:99px;font:inherit;cursor:pointer}
+nav button.on{background:var(--v);border-color:var(--v);color:#fff;box-shadow:0 0 18px #8b5cf688}
+main{max-width:1100px;margin:16px auto;padding:0 16px 60px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center}
+button.b,.bar button{background:var(--p2);border:1px solid var(--bd);color:var(--t);padding:8px 14px;border-radius:10px;font:inherit;cursor:pointer}
+button.b:hover,.bar button:hover{border-color:var(--v)}button.pri{background:var(--v);border-color:var(--v)}button.sm{padding:4px 10px;font-size:13px}
+input,select,textarea{background:#0b0616;border:1px solid var(--bd);color:var(--t);padding:8px 10px;border-radius:10px;font:inherit;max-width:100%}
+textarea{width:100%;min-height:120px}
+:focus-visible{outline:2px solid var(--v2);outline-offset:2px}
+.row{display:flex;gap:0;margin-bottom:8px;background:var(--p);border:1px solid var(--bd);border-radius:14px;overflow:hidden;min-height:78px}
+.row.over{border-color:var(--v2)}
+.lab{width:74px;flex:none;display:grid;place-items:center;font:800 22px Unbounded,Arial;background:var(--p2);border-right:1px solid var(--bd)}
+.lab.t0{color:var(--g);background:linear-gradient(135deg,#3a1f6e,#14092a);text-shadow:0 0 14px var(--g)}.lab.t1{color:var(--v2)}.lab.tN{font-size:11px;text-align:center;color:var(--m)}
+.row.r0{border-color:var(--g);box-shadow:0 0 28px #8b5cf655}
+.pls{display:flex;flex-wrap:wrap;gap:8px;padding:8px;flex:1}
+.pl{display:flex;flex-direction:column;align-items:center;width:84px;cursor:pointer;font-size:12.5px;text-align:center}
+.pl span{color:var(--m);font-size:11px}
+.av{width:52px;height:52px;border-radius:12px;display:grid;place-items:center;font:800 20px Unbounded,Arial;color:#fff;border:2px solid #ffffff22;flex:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.card{background:var(--p);border:1px solid var(--bd);border-radius:14px;padding:12px}
+.pc{display:flex;gap:10px;align-items:center;cursor:pointer}.pc small{color:var(--m);display:block}
+.f{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.m{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+.tag{font-size:12px;padding:2px 9px;border-radius:99px;background:var(--p2);border:1px solid var(--bd);color:var(--v2)}
+.ok{color:var(--ok)}.no{color:var(--no)}.mu{color:var(--m)}
+table{width:100%;border-collapse:collapse}td,th{padding:8px 6px;text-align:left;border-bottom:1px solid var(--bd)}th{color:var(--m);font-weight:400}
+.br{display:flex;gap:18px;overflow-x:auto;padding-bottom:10px}.rd{display:flex;flex-direction:column;justify-content:space-around;gap:10px;min-width:170px}
+.bm{background:var(--p);border:1px solid var(--bd);border-radius:10px;overflow:hidden}.bm div{padding:7px 10px;cursor:pointer;display:flex;justify-content:space-between;gap:8px}.bm div+div{border-top:1px solid var(--bd)}.bm .w{background:#8b5cf633;color:var(--v2);font-weight:600}
+.md{position:fixed;inset:0;background:#000c;display:grid;place-items:center;padding:16px;z-index:9}.md>div{background:var(--p);border:1px solid var(--v);border-radius:16px;padding:18px;max-width:480px;width:100%;max-height:88vh;overflow:auto;box-shadow:0 0 40px #8b5cf655}
+h2{font-size:18px;margin:18px 0 10px}
+.auth input{width:100%}.av{object-fit:cover}#au{display:flex;gap:10px;align-items:center;margin-top:10px}#au .av{width:34px;height:34px;border-radius:50%;font-size:14px}
+</style>
+</head><body>
+<header><h1>Storm <b>СНГ</b></h1><p>Рейтинг, вызовы и турниры игроков Naruto Ultimate Storm</p><div id="au"></div></header>
+<nav id="nv"></nav><main id="app"><p class="mu">Загрузка...</p></main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+const SB_URL='https://ajnzakhndrqgodxvdauj.supabase.co',SB_KEY='sb_publishable_nr5myEEKVkCCwBMbwzWr9w_gSVysYGu';
+const sb=supabase.createClient(SB_URL,SB_KEY);
+const $=s=>document.querySelector(s),esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const T=['S+','S','A','B','N'];
+const CH=['Наруто (Режим Бариона)','Саске (Сусано)','Хаширама','Тобирама','Мадара','Итачи','Какаши','Минато','Обито','Кагуя','Орочимару','Джирайя','Пейн','Гай','Рок Ли','Хината','Саратсугу','Кисаме'];
+let S={admin:false,all:[],players:[],matches:[],season:1,hof:[],br:null,rules:'',me:null,user:null};
+const ui={tab:'tier',adm:false,open:null,auth:null,aerr:'',ainfo:''};
+const AD=()=>ui.adm&&S.admin;
+let loadSeq=0;
+async function load(){
+ const my=++loadSeq;
+ try{
+ const [p,m,a,ss]=await Promise.all([sb.from('profiles').select('*'),sb.from('matches').select('*'),sb.from('app_state').select('*'),sb.auth.getSession()]);
+ if(my!=loadSeq)return;
+ if(p.error||m.error){$('#app').innerHTML='<p class="no">Не удалось загрузить данные. Проверь, что schema.sql выполнен в Supabase. '+esc((p.error||m.error).message)+'</p>';return}
+ S.all=p.data;S.players=S.all.filter(x=>x.listed);S.matches=m.data.map(x=>({...x,t:Date.parse(x.t)}));
+ const st={};(a.data||[]).forEach(r=>st[r.key]=r.val);S.season=st.season||1;S.hof=st.hof||[];S.br=st.bracket||null;S.rules=st.rules||'';
+ const u=ss.data&&ss.data.session&&ss.data.session.user;S.user=u||null;S.me=u?S.all.find(x=>x.user_id==u.id)||null:null;
+ S.admin=!!(S.me&&S.me.admin);if(u){const r=await sb.rpc('is_admin');if(r.data===true)S.admin=true}
+ if(!S.admin)ui.adm=false;else if(!ui.adm0){ui.adm0=1;ui.adm=true}
+ R()
+ }catch(e){if(my==loadSeq)$('#app').innerHTML='<p class="no">Ошибка загрузки: '+esc(e.message||e)+'. Обнови страницу.</p>'}}
+const Q=async pr=>{const r=await pr;if(r.error){alert(r.error.message);return false}return true};
+const P=id=>S.all.find(p=>p.id==id)||{nick:'удалён',tier:'N',elo:0,w:0,l:0,id:0};
+const av=p=>{if(p.avatar)return`<img class="av" src="${esc(p.avatar)}" alt="">`;let h=0;for(const c of p.nick)h=(h*31+c.charCodeAt(0))%360;return`<div class="av" style="background:linear-gradient(135deg,hsl(${(h%60)+250} 65% 48%),hsl(${(h%60)+280} 60% 16%))">${esc(p.nick[0].toUpperCase())}</div>`};
+const wr=p=>p.w+p.l?Math.round(100*p.w/(p.w+p.l))+'%':'нет боёв';
+const when=t=>{const d=t-Date.now(),s=new Date(t).toLocaleString('ru',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});return s+' ('+(d<=0?'время пришло':'через '+(d>864e5?Math.round(d/864e5)+' дн':d>36e5?Math.round(d/36e5)+' ч':Math.max(1,Math.round(d/6e4))+' мин'))+')'};
+const TABS=[['tier','Тир-лист'],['pl','Игроки'],['m','Бои'],['br','Турнир'],['rt','Рейтинг'],['info','Правила и статистика']];
+function R(){const me=S.me;
+$('#au').innerHTML=S.user?`${me?av(me):''}<b>${esc(me?me.nick:'Игрок')}</b>${me&&me.admin?'<span class="tag">админ</span>':''}<button class="b sm" data-a="out">Выйти</button>`:'<button class="b pri" data-a="auth">Войти / Регистрация</button>';
+$('#nv').innerHTML=TABS.map(t=>`<button data-a="tab" data-t="${t[0]}" class="${ui.tab==t[0]?'on':''}">${t[1]}</button>`).join('');
+$('#app').innerHTML=({tier:vTier,pl:vPl,m:vM,br:vBr,rt:vRt,info:vInfo})[ui.tab]()+(ui.open?modal():'')+(ui.auth?authModal():'')}
+function vTier(){const adm=S.admin;return`${S.me&&!S.me.listed?'<p class="mu">Ты вошёл, но тебя ещё нет в тир-листе. Админ добавит тебя после проверки.</p>':''}<div class="bar">${adm?`<button data-a="adm" class="${ui.adm?'pri':''}">${ui.adm?'Режим админа включён':'Режим админа'}</button>`:''}${AD()?'<button data-a="auto">Расставить по рейтингу</button><span class="mu">Перетаскивай игроков между рядами. Non playable остаётся как есть</span>':''}</div>`+T.map((t,i)=>`<div class="row r${i==0?0:''}" data-t="${t}"><div class="lab t${i<1?0:i<2?1:t=='N'?'N':''}">${t=='N'?'Non playable':t}</div><div class="pls">${S.players.filter(p=>p.tier==t).sort((a,b)=>b.elo-a.elo).map(p=>`<div class="pl" data-a="open" data-id="${p.id}" draggable="${!!AD()}">${av(p)}${esc(p.nick)}<span>${p.elo}</span></div>`).join('')}</div></div>`).join('')}
+function vPl(){const nw=AD()?S.all.filter(p=>!p.listed):[];return`${nw.length?`<h2>Новые игроки (не в тир-листе)</h2><div class="grid">${nw.map(p=>`<div class="card pc">${av(p)}<div><b>${esc(p.nick)}</b><small>${p.user_id?'Зарегистрирован':'Заготовка'}</small><div class="f"><button class="b pri" data-a="list" data-id="${p.id}">В тир-лист</button><button class="b" data-a="del" data-id="${p.id}">Удалить</button></div></div></div>`).join('')}</div><h2>Игроки</h2>`:''}${AD()?'<div class="f"><input id="np" placeholder="Ник заготовки (игрок ещё не вошёл)" maxlength="24"><button class="b pri" data-a="addp">Добавить заготовку</button></div>':''}<div class="grid">${S.players.map(p=>`<div class="card pc" data-a="open" data-id="${p.id}">${av(p)}<div><b>${esc(p.nick)}</b><small>Тир ${p.tier} · ${p.elo}</small><small>${p.w}П / ${p.l}П · ${wr(p)}</small>${p.user_id?'':'<small>Свободный профиль: нажми и забери</small>'}</div></div>`).join('')}</div>`}
+function vM(){const me=S.me,L=[...S.matches].sort((a,b)=>a.t-b.t),reg=S.players.filter(p=>p.user_id&&(!me||p.id!=me.id));
+const form=me?`<div class="card"><h3>Вызвать на бой</h3><div class="f" style="margin:12px 0 0"><span>Ты: <b>${esc(me.nick)}</b> против</span><select id="mb">${reg.map(p=>`<option value="${p.id}">${esc(p.nick)}</option>`).join('')}</select><input id="mt" type="datetime-local"><select id="mf"><option selected>FT5</option><option>FT7</option><option>FT10</option></select><button class="b pri" data-a="chal">Вызвать</button></div></div>`:'<div class="card">Чтобы вызывать на бой и вносить результаты, <a href="#" data-a="auth" style="color:var(--v2)">войди или зарегистрируйся</a>.</div>';
+return form+`<h2>Расписание и результаты</h2>${L.length?L.map(mc).join(''):'<p class="mu">Боёв пока нет.</p>'}<datalist id="chl">${CH.map(x=>`<option value="${x}">`).join('')}</datalist>`}
+function mc(m){const me=S.me,a=P(m.a),b=P(m.b),isA=me&&m.a==me.id,isB=me&&m.b==me.id,adm=me&&me.admin,mine=isA||isB||adm;let st='',x='';
+if(m.s=='p'){st='Ждёт ответа';x=((isB||adm)?`<button class="b sm pri" data-a="acc" data-id="${m.id}">Принять</button> `:'<span class="mu">Ждёт ответа соперника</span> ')+(mine?`<button class="b sm" data-a="dec" data-id="${m.id}">${isB?'Отклонить':'Отменить'}</button>`:'')}
+if(m.s=='a'){st='Принят';x=mine?`<input id="sa${m.id}" type="number" min="0" max="10" placeholder="${esc(a.nick)}" style="width:76px"> : <input id="sb${m.id}" type="number" min="0" max="10" placeholder="${esc(b.nick)}" style="width:76px"> <input id="ca${m.id}" list="chl" placeholder="Персонаж 1" style="width:130px"><input id="cb${m.id}" list="chl" placeholder="Персонаж 2" style="width:130px"> <button class="b sm pri" data-a="res" data-id="${m.id}">Внести счёт</button> <button class="b sm" data-a="dec" data-id="${m.id}">Отменить бой</button>`:''}
+if(m.s=='c'){st='Ждёт подтверждения '+m.sa+':'+m.sb;x=['a','b'].map(k=>m['y'+k]?`<span class="ok">${esc(P(m[k]).nick)} подтвердил</span>`:((me&&m[k]==me.id)||adm)?`<button class="b sm pri" data-a="cf" data-id="${m.id}" data-k="${k}">Подтвердить: ${esc(P(m[k]).nick)}</button>`:`<span class="mu">${esc(P(m[k]).nick)} ещё не подтвердил</span>`).join(' ')+(mine?` <button class="b sm" data-a="dis" data-id="${m.id}">Оспорить</button>`:'')}
+if(m.s=='d'){st=`Сыгран ${m.sa}:${m.sb}`;x=`<span class="mu">Рейтинг победителя и проигравшего изменился на ${m.dl}</span>`}
+return`<div class="card" style="margin-bottom:8px"><div class="m"><b>${esc(a.nick)} против ${esc(b.nick)}</b><span class="tag">${m.f}</span></div><div class="mu">${when(m.t)}</div><div class="m" style="margin-top:8px"><span class="tag">${st}</span><span>${x}</span></div></div>`}
+const saveBr=()=>Q(sb.from('app_state').upsert({key:'bracket',val:S.br}));
+function vBr(){const B=S.br;let h=AD()?`<div class="f"><select id="bn"><option>4</option><option>8</option><option>16</option></select><button class="b pri" data-a="mk">Создать пустую сетку</button><span class="mu">Сетка создаётся пустой, участников выбираешь сам в первом круге</span></div>`:'';if(!B)return h+'<p class="mu">Сетки нет. Турнир создаёт админ.</p>';
+const used0=new Set();B[0].forEach(m=>{if(m.a)used0.add(m.a);if(m.b)used0.add(m.b)});
+h+='<div class="br">'+B.map((r,ri)=>`<div class="rd">${r.map((m,i)=>`<div class="bm">${['a','b'].map(k=>ri==0&&AD()&&!m[k]?`<div><select data-slot="${i}:${k}" style="width:100%"><option value="">Выбрать игрока</option>${S.players.filter(p=>!used0.has(p.id)).sort((a,b)=>a.nick.localeCompare(b.nick)).map(p=>`<option value="${p.id}">${esc(p.nick)} (${p.elo})</option>`).join('')}</select></div>`:`<div class="${m.w==k?'w':''}" data-a="win" data-r="${ri}" data-i="${i}" data-k="${k}"><span>${m[k]?esc(P(m[k]).nick):'ждём'}</span><span class="mu">${m[k]?P(m[k]).elo:''}${ri==0&&AD()&&m[k]?` <button class="b" data-a="rm" data-i="${i}" data-k="${k}" title="Убрать" style="padding:0 6px">✕</button>`:''}</span></div>`).join('')}</div>`).join('')}</div>`).join('')+'</div>';const f=B[B.length-1][0];if(f.w)h+=`<h2>Чемпион: <span style="color:var(--g)">${esc(P(f[f.w]).nick)}</span></h2>`;return h+(AD()?'<p class="mu">Выбери игроков в первом круге. Нажми на ник, чтобы отметить победителя матча, ✕ убирает игрока из слота.</p>':'')}
+function clr(r,i){const n=S.br[r+1]&&S.br[r+1][i>>1];if(!n)return;n[i%2?'b':'a']=null;if(n.w){n.w=null;clr(r+1,i>>1)}}
+function vRt(){const L=[...S.players].sort((a,b)=>b.elo-a.elo);return`<div class="bar"><h3>Сезон ${S.season}</h3>${AD()?'<button class="b" data-a="end">Завершить сезон</button>':''}<span class="mu">Топ-3 уйдёт в зал славы, рейтинг сожмётся к середине</span></div><div class="card"><table><tr><th>#</th><th>Игрок</th><th>Тир</th><th>Рейтинг</th><th>Победы</th><th>Поражения</th><th>Доля побед</th></tr>${L.map((p,i)=>`<tr data-a="open" data-id="${p.id}" style="cursor:pointer"><td>${i+1}</td><td>${esc(p.nick)}</td><td>${p.tier}</td><td><b>${p.elo}</b></td><td>${p.w}</td><td>${p.l}</td><td>${wr(p)}</td></tr>`).join('')}</table></div><h2>Зал славы</h2>${S.hof.length?S.hof.map(h=>`<div class="card" style="margin-bottom:8px"><b>Сезон ${h.s}</b><div>1 место: <span style="color:var(--g)">${esc(h.t[0]||'')}</span>, 2 место: ${esc(h.t[1]||'')}, 3 место: ${esc(h.t[2]||'')}</div></div>`).join(''):'<p class="mu">Пока пусто. Первый сезон ещё идёт.</p>'}`}
+function vInfo(){const c={};S.matches.filter(m=>m.s=='d').forEach(m=>[['ca',m.sa>m.sb],['cb',m.sb>m.sa]].forEach(([k,w])=>{const n=(m[k]||'').trim();if(!n)return;c[n]=c[n]||{g:0,w:0};c[n].g++;if(w)c[n].w++}));const L=Object.entries(c).sort((a,b)=>b[1].g-a[1].g);
+return`<div class="card"><h3>Правила и банлист</h3><div class="f" style="margin:10px 0 0"><textarea id="rl" ${AD()?'':'readonly'}>${esc(S.rules)}</textarea>${AD()?'<button class="b pri" data-a="rul">Сохранить правила</button>':''}</div></div><h2>Статистика персонажей</h2><div class="card">${L.length?`<table><tr><th>Персонаж</th><th>Боёв</th><th>Доля побед</th></tr>${L.map(([n,v])=>`<tr><td>${esc(n)}</td><td>${v.g}</td><td>${Math.round(100*v.w/v.g)}%</td></tr>`).join('')}</table>`:'<span class="mu">Появится, когда в результатах боёв будут указаны персонажи.</span>'}</div>`}
+function modal(){const p=P(ui.open),me=S.me,own=me&&me.id==p.id,can=own||AD(),h=S.matches.filter(m=>m.s=='d'&&(m.a==p.id||m.b==p.id)).slice(-6).reverse();
+return`<div class="md" data-a="close"><div><div class="pc" style="cursor:default">${av(p)}<div><h3>${esc(p.nick)}</h3><small>Тир ${p.tier} · рейтинг ${p.elo} · ${p.w}П / ${p.l}П · ${wr(p)}</small></div></div>${!S.user&&!p.user_id?claimBox(p):''}${can?`<h2>Ник</h2><input id="pn" value="${esc(p.nick)}" maxlength="24" placeholder="Твой ник" style="width:100%">`:''}<h2>Любимые персонажи</h2>${can?`<input id="pc" list="chl" value="${esc(p.ch)}" placeholder="Через запятую" style="width:100%"><datalist id="chl">${CH.map(x=>`<option value="${x}">`).join('')}</datalist>`:`<div>${esc(p.ch)||'<span class="mu">Не указаны</span>'}</div>`}${AD()?`<h2>Тир и рейтинг (админ)</h2><div class="f"><select id="pt">${T.map(t=>`<option${t==p.tier?' selected':''}>${t}</option>`).join('')}</select><input id="pe" type="number" value="${p.elo}" style="width:100px"></div>`:''}${AD()&&!p.user_id?`<h2>Discord-логин игрока</h2><div class="f"><input id="pdn" value="${esc(p.dname||'')}" placeholder="например kiritsugu_newera" maxlength="40"><button class="b pri" data-a="lk" data-id="${p.id}">Сохранить логин</button></div><small class="mu">Когда игрок зайдёт через Discord с этим логином, он сам встанет на это место</small>`:''}${AD()&&!p.user_id?`<h2>Привязать к аккаунту Discord</h2><div class="f"><select id="pm">${S.all.filter(x=>x.user_id).map(x=>`<option value="${x.id}">${esc(x.nick)}</option>`).join('')}</select><button class="b" data-a="mg" data-id="${p.id}">Привязать</button></div>`:''}<h2>Последние бои</h2>${h.length?h.map(m=>{const a=m.a==p.id,w=(m.sa>m.sb)==a;return`<div>${w?'<span class="ok">Победа</span>':'<span class="no">Поражение</span>'} против ${esc(P(a?m.b:m.a).nick)} ${m.sa}:${m.sb}</div>`}).join(''):'<span class="mu">Боёв ещё не было</span>'}<div class="f" style="margin:16px 0 0">${can?`<button class="b pri" data-a="sp" data-id="${p.id}">Сохранить</button>`:''}<button class="b" data-a="close">Закрыть</button>${AD()?`<button class="b" data-a="${p.listed?'unl':'list'}" data-id="${p.id}">${p.listed?'Убрать из тир-листа':'В тир-лист'}</button><button class="b" data-a="del" data-id="${p.id}">Удалить игрока</button>`:''}</div></div></div>`}
+const claimBox=p=>`<div class="card" style="margin-top:12px;border-color:var(--v)"><b>Это твой профиль?</b><div class="mu" style="margin:4px 0 8px">Введи почту и придумай пароль, и профиль станет твоим. Тир и рейтинг сохранятся.</div><div class="f" style="flex-direction:column;margin:0"><input id="ce" type="email" placeholder="Почта" autocomplete="email" style="width:100%"><input id="cp" type="password" placeholder="Пароль (от 6 символов)" autocomplete="new-password" style="width:100%"><div id="cerr" class="no"></div><button class="b pri" data-a="cl" data-id="${p.id}">Это я, забрать профиль</button></div></div>`;
+function authModal(){const up=ui.auth=='up';return`<div class="md" data-a="close"><div class="auth"><h2 style="margin-top:0">${up?'Регистрация':'Вход'}</h2>${ui.ainfo?`<p class="ok">${esc(ui.ainfo)}</p>`:''}<div class="f" style="flex-direction:column;margin:0 0 10px">${up?'<input id="an" placeholder="Ник (виден всем)" maxlength="24" autocomplete="nickname">':''}<input id="ae" type="email" placeholder="Почта" autocomplete="email"><input id="ap" type="password" placeholder="Пароль (от 6 символов)" autocomplete="${up?'new-password':'current-password'}"></div><p id="aerr" class="no" style="margin:0 0 10px">${esc(ui.aerr)}</p><div class="f"><button class="b pri" data-a="${up?'su':'si'}">${up?'Зарегистрироваться':'Войти'}</button><button class="b" data-a="dc">Через Discord</button></div><div class="f" style="margin:0"><button class="b sm" data-a="amode">${up?'Уже есть аккаунт? Войти':'Нет аккаунта? Зарегистрироваться'}</button><button class="b sm" data-a="close">Закрыть</button></div></div></div>`}
+const aerr=m=>{m=String(m||'');return/Invalid login/i.test(m)?'Неверная почта или пароль':/already registered/i.test(m)?'Эта почта уже зарегистрирована':/at least 6|weak/i.test(m)?'Пароль должен быть не короче 6 символов':/not confirmed/i.test(m)?'Сначала подтверди почту по письму':/valid email|invalid format/i.test(m)?'Проверь адрес почты':/rate limit/i.test(m)?'Слишком много попыток, подожди немного':m};
+async function doAuth(k){const em=V('ae').trim(),pw=V('ap');ui.aerr='';ui.ainfo='';const fail=t=>{ui.aerr=t;const e=$('#aerr');if(e)e.textContent=t};
+if(!em||!pw)return fail('Введи почту и пароль');
+if(k=='si'){const r=await sb.auth.signInWithPassword({email:em,password:pw});if(r.error)return fail(aerr(r.error.message));ui.auth=null;return load()}
+const nn=V('an').trim();if(nn.length<2||nn.length>24)return fail('Ник должен быть от 2 до 24 символов');if(pw.length<6)return fail('Пароль должен быть не короче 6 символов');
+const f=await sb.rpc('nick_free',{p_nick:nn});if(f.error)return fail(aerr(f.error.message));if(f.data===false)return fail('Такой ник уже занят');
+const r=await sb.auth.signUp({email:em,password:pw,options:{data:{nick:nn},emailRedirectTo:location.origin+location.pathname}});
+if(r.error)return fail(aerr(r.error.message));
+if(r.data.session){ui.auth=null;return load()}
+if(r.data.user&&r.data.user.identities&&!r.data.user.identities.length)return fail('Эта почта уже зарегистрирована');
+ui.auth='in';ui.ainfo='Готово! Мы отправили письмо на '+em+'. Перейди по ссылке в нём, затем войди.';R()}
+const V=id=>{const e=document.getElementById(id);return e?e.value:''};
+document.addEventListener('click',async e=>{const a=e.target.closest('[data-a]');if(!a)return;const d=a.dataset,id=d.id;
+if(d.a=='close'){if(e.target.closest('.md>div')&&!e.target.closest('button'))return;ui.open=null;ui.auth=null;return R()}
+if(e.target.closest('.md')&&!['sp','del','mg','list','unl','lk','si','su','dc','amode','cl'].includes(d.a))return;
+if(d.a=='tab'){ui.tab=d.t;return R()}if(d.a=='adm'){ui.adm=!ui.adm;return R()}if(d.a=='open'){ui.open=id;return R()}
+if(d.a=='auth'){ui.auth='in';ui.aerr='';ui.ainfo='';return R()}
+if(d.a=='amode'){ui.auth=ui.auth=='in'?'up':'in';ui.aerr='';ui.ainfo='';return R()}
+if(d.a=='si'||d.a=='su')return doAuth(d.a);
+if(d.a=='cl'){const em=V('ce').trim(),pw=V('cp'),er=t=>{const x=$('#cerr');if(x)x.textContent=t};
+if(!em||!pw)return er('Введи почту и пароль');if(pw.length<6)return er('Пароль должен быть не короче 6 символов');
+const p=P(id);if(p.user_id)return er('Этот профиль уже занят');
+const r=await sb.auth.signUp({email:em,password:pw,options:{data:{claim:id,nick:p.nick},emailRedirectTo:location.origin+location.pathname}});
+if(r.error)return er(aerr(r.error.message));
+if(r.data.user&&r.data.user.identities&&!r.data.user.identities.length)return er('Эта почта уже зарегистрирована. Войди через кнопку «Войти / Регистрация»');
+ui.open=null;if(!r.data.session)alert('Профиль закреплён за тобой. Мы отправили письмо на '+em+': подтверди почту и войди.');return load()}
+if(d.a=='dc'){await sb.auth.signInWithOAuth({provider:'discord',options:{redirectTo:location.origin+location.pathname}});return}
+if(d.a=='out'){await sb.auth.signOut();return load()}
+const M=(act,x={})=>Q(sb.rpc('match_act',{p_mid:+id,p_act:act,...x}));
+if(d.a=='auto')await Promise.all(S.players.filter(p=>p.tier!='N').map(p=>{const t=p.elo>=1560?'S+':p.elo>=1460?'S':p.elo>=1360?'A':'B';return t==p.tier?0:sb.from('profiles').update({tier:t}).eq('id',p.id)}));
+else if(d.a=='addp'){const n=V('np').trim();if(n)await Q(sb.from('profiles').insert({nick:n}))}
+else if(d.a=='sp'){const own=S.me&&S.me.id==id;const nn=V('pn').trim();if(nn.length<2||nn.length>24){alert('Ник должен быть от 2 до 24 символов');return}
+if(AD())await Q(sb.from('profiles').update({nick:nn,ch:V('pc').trim(),tier:V('pt'),elo:+V('pe')}).eq('id',id));else if(own){if(await Q(sb.rpc('set_nick',{p_nick:nn})))await Q(sb.rpc('set_chars',{p_ch:V('pc').trim()}))}ui.open=null}
+else if(d.a=='lk'){await Q(sb.rpc('adm_link',{p_ph:id,p_name:V('pdn')}));ui.open=null}
+else if(d.a=='list'||d.a=='unl'){await Q(sb.from('profiles').update({listed:d.a=='list'}).eq('id',id));ui.open=null}
+else if(d.a=='del'){if(confirm('Удалить игрока и его бои?')){await Q(sb.from('profiles').delete().eq('id',id));ui.open=null}}
+else if(d.a=='mg'){await Q(sb.rpc('adm_merge',{p_ph:id,p_real:V('pm')}));ui.open=null}
+else if(d.a=='chal'){const t=new Date(V('mt')).getTime();if(!V('mb')||!t){alert('Выбери соперника, дату и время');return}await Q(sb.from('matches').insert({a:S.me.id,b:V('mb'),t:new Date(t).toISOString(),f:V('mf'),s:'p'}))}
+else if(d.a=='acc')await M('acc');else if(d.a=='dec')await M('dec');else if(d.a=='dis')await M('dis');
+else if(d.a=='res'){const x=+V('sa'+id),y=+V('sb'+id);if(x==y){alert('Ничьей не бывает: счёт должен быть разный');return}const mm=S.matches.find(z=>z.id==id),ft=mm&&/^FT(\d+)$/.exec(mm.f);if(ft&&Math.max(x,y)!=+ft[1]){alert('В формате '+mm.f+' победитель должен набрать ровно '+ft[1]+' побед');return}await M('res',{p_sa:x,p_sb:y,p_ca:V('ca'+id),p_cb:V('cb'+id)})}
+else if(d.a=='cf')await M('cf',{p_k:d.k});
+else if(d.a=='mk'){const n=+V('bn');if(S.br&&!confirm('Текущая сетка будет заменена пустой. Продолжить?'))return;S.br=[Array.from({length:n/2},()=>({a:null,b:null,w:null}))];while(S.br[S.br.length-1].length>1)S.br.push(Array.from({length:S.br[S.br.length-1].length/2},()=>({a:null,b:null,w:null})));await saveBr()}
+else if(d.a=='rm'){if(!AD())return;const i=+d.i,x=S.br[0][i];if(x.w)clr(0,i);x.w=null;x[d.k]=null;await saveBr()}
+else if(d.a=='win'){if(!AD())return;const r=+d.r,i=+d.i,x=S.br[r][i];if(!x[d.k])return;if(x.w)clr(r,i);x.w=d.k;if(r+1<S.br.length)S.br[r+1][i>>1][i%2?'b':'a']=x[d.k];await saveBr()}
+else if(d.a=='end'){if(confirm('Завершить сезон? Рейтинг сожмётся, победы обнулятся.'))await Q(sb.rpc('end_season'))}
+else if(d.a=='rul')await Q(sb.from('app_state').upsert({key:'rules',val:V('rl')}));
+await load()});
+document.addEventListener('dragstart',e=>{const p=e.target.closest('.pl');if(p&&AD())e.dataTransfer.setData('text',p.dataset.id)});
+document.addEventListener('dragover',e=>{if(AD()&&e.target.closest('.row'))e.preventDefault()});
+document.addEventListener('drop',async e=>{const r=e.target.closest('.row');if(!r||!AD())return;e.preventDefault();const id=e.dataTransfer.getData('text');if(id){await Q(sb.from('profiles').update({tier:r.dataset.t}).eq('id',id));load()}});
+document.addEventListener('change',async e=>{const t=e.target.closest&&e.target.closest('select[data-slot]');if(!t||!AD()||!t.value||!S.br)return;const [i,k]=t.dataset.slot.split(':');const x=S.br[0][+i];if(!x)return;x[k]=t.value;await saveBr();await load()});
+sb.auth.onAuthStateChange(()=>{if(!ui.auth)setTimeout(load,0)});
+document.addEventListener('keydown',e=>{if(e.key=='Enter'&&e.target.closest&&e.target.closest('.auth')){const b=document.querySelector('.auth [data-a=si],.auth [data-a=su]');if(b)b.click()}});
+load();setInterval(()=>{if(!ui.open&&!ui.auth&&!document.querySelector('input:focus,textarea:focus,select:focus'))load()},30000);
+</script></body></html>
