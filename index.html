@@ -61,6 +61,22 @@ nav button.on{box-shadow:0 0 18px #ff7a1a88;background:linear-gradient(180deg,#f
 .lab{font-family:"Russo One",Arial}
 .md>div{border-color:var(--v)}
 header>p{margin:6px auto 0;color:#d5dcec;text-shadow:0 1px 8px #000c}
+
+/* ===== Новогодний стиль ===== */
+header{border-bottom:5px solid;border-image:repeating-linear-gradient(135deg,#e63946 0 9px,#f6f6f6 9px 18px) 1}
+header::after{display:none}
+h1::after{content:" 🎄";font-size:.8em}
+h1 b{color:#ff4d5a;text-shadow:0 0 22px #ff4d5aaa,0 0 4px #ffd23f66}
+nav button.on,button.pri{background:linear-gradient(180deg,#f0505c,#c1121f);border-color:#e63946;color:#fff;box-shadow:0 0 18px #e6394688}
+.xg{position:fixed;top:0;left:0;height:100vh;z-index:2;pointer-events:none;overflow:hidden}
+.xg.r{left:auto;right:0;transform:scaleX(-1)}
+.xh{position:absolute;transform-origin:50% 50%}
+.xl{animation:xtw 2.4s ease-in-out infinite}.xl.b{animation-delay:-.8s}.xl.c{animation-delay:-1.6s}.xl.d{animation-duration:3.1s;animation-delay:-.4s}
+@keyframes xtw{0%,100%{opacity:.3}50%{opacity:1}}
+@media(prefers-reduced-motion:reduce){.xl{animation:none}}
+.avw{position:relative;display:block;flex:none;line-height:0}
+.avw::after{content:"";position:absolute;left:19%;top:-41%;width:68%;aspect-ratio:100/90;background:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 90'><path d='M12 68C16 34 40 10 72 10C66 24 74 46 90 68Z' fill='%23d62828'/><path d='M12 68C16 36 36 14 62 11C54 30 58 52 66 68Z' fill='%23a31d1d' opacity='.5'/><circle cx='76' cy='12' r='10' fill='%23fff'/><rect x='6' y='60' width='88' height='22' rx='11' fill='%23fff'/><rect x='6' y='74' width='88' height='8' rx='4' fill='%23dfe6ee' opacity='.7'/></svg>") center/contain no-repeat;transform:rotate(-8deg);transform-origin:50% 90%;pointer-events:none;filter:drop-shadow(0 1px 1px #0008)}
+.pls{padding-top:24px}
 </style>
 </head><body>
 <header><h1>Storm <b>СНГ</b></h1><p>Рейтинг, вызовы и турниры игроков Naruto Ultimate Storm</p><div id="au"></div></header>
@@ -92,7 +108,7 @@ async function load(){
  }catch(e){if(my==loadSeq)$('#app').innerHTML='<p class="no">Ошибка загрузки: '+esc(e.message||e)+'. Обнови страницу.</p>'}}
 const Q=async pr=>{const r=await pr;if(r.error){alert(r.error.message);return false}return true};
 const P=id=>S.all.find(p=>p.id==id)||{nick:'удалён',tier:'N',elo:0,w:0,l:0,id:0};
-const av=p=>{if(p.avatar)return`<img class="av" src="${esc(p.avatar)}" alt="">`;let h=0;for(const c of p.nick)h=(h*31+c.charCodeAt(0))%360;return`<div class="av" style="background:linear-gradient(135deg,hsl(${(h%60)+250} 65% 48%),hsl(${(h%60)+280} 60% 16%))">${esc(p.nick[0].toUpperCase())}</div>`};
+const av=p=>`<span class="avw">${avI(p)}</span>`;const avI=p=>{if(p.avatar)return`<img class="av" src="${esc(p.avatar)}" alt="">`;let h=0;for(const c of p.nick)h=(h*31+c.charCodeAt(0))%360;return`<div class="av" style="background:linear-gradient(135deg,hsl(${(h%60)+250} 65% 48%),hsl(${(h%60)+280} 60% 16%))">${esc(p.nick[0].toUpperCase())}</div>`};
 const wr=p=>p.w+p.l?Math.round(100*p.w/(p.w+p.l))+'%':'нет боёв';
 const when=t=>{const d=t-Date.now(),s=new Date(t).toLocaleString('ru',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});return s+' ('+(d<=0?'время пришло':'через '+(d>864e5?Math.round(d/864e5)+' дн':d>36e5?Math.round(d/36e5)+' ч':Math.max(1,Math.round(d/6e4))+' мин'))+')'};
 const srt=(a,b)=>(a.pos==null?1e9:a.pos)-(b.pos==null?1e9:b.pos)||b.elo-a.elo;
@@ -288,24 +304,71 @@ document.addEventListener('keydown',e=>{if(e.key=='Enter'&&e.target.closest&&e.t
 load();setInterval(()=>{if(!ui.open&&!ui.auth&&!document.querySelector('input:focus,textarea:focus,select:focus'))load()},30000);
 </script><div style="position:fixed;right:8px;bottom:4px;font-size:10px;opacity:.5;pointer-events:none">v7</div><script>
 (function(){
-if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-const c=document.createElement('canvas');c.setAttribute('aria-hidden','true');c.style.cssText='position:fixed;left:0;top:0;width:100%;height:100%;z-index:-1;pointer-events:none';document.body.prepend(c);
-const x=c.getContext('2d');let W=0,H=0,dp=1,ps=[],last=0,raf=0;
-const sp=document.createElement('canvas');sp.width=sp.height=48;const g=sp.getContext('2d');g.translate(24,24);
-const gr=g.createRadialGradient(0,-4,2,0,0,20);gr.addColorStop(0,'#ffe9f0');gr.addColorStop(1,'#ff9fba');g.fillStyle=gr;
-g.beginPath();g.moveTo(0,-17);g.bezierCurveTo(17,-14,17,10,4,19);g.lineTo(0,14);g.lineTo(-4,19);g.bezierCurveTo(-17,10,-17,-14,0,-17);g.fill();
-const R=Math.random;
-const mk=init=>({x:R()*W,y:init?R()*H:-30,s:10+R()*16,vy:28+R()*38,sw:R()*6.28,sf:.5+R(),sa:18+R()*34,r:R()*6.28,vr:(R()-.5)*1.8,a:.35+R()*.45});
-function size(){dp=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;c.width=W*dp;c.height=H*dp;const n=Math.max(14,Math.min(40,Math.round(W/38)));while(ps.length<n)ps.push(mk(true));ps.length=n}
-function loop(t){const dt=Math.min(.05,(t-last)/1000||0);last=t;x.setTransform(1,0,0,1,0,0);x.clearRect(0,0,c.width,c.height);
-for(const p of ps){p.y+=p.vy*dt;p.sw+=p.sf*dt;p.x+=(Math.sin(p.sw)*p.sa+14)*dt;p.r+=p.vr*dt;
-if(p.y>H+30||p.x>W+40){Object.assign(p,mk(false));p.x=R()*W*1.1-W*.1}
-const k=p.s/48*dp,f=.45+.55*Math.abs(Math.cos(p.sw*1.7)),co=Math.cos(p.r),si=Math.sin(p.r);
-x.globalAlpha=p.a;x.setTransform(co*k,si*k,-si*k*f,co*k*f,p.x*dp,p.y*dp);x.drawImage(sp,-24,-24)}
+const R=Math.random,RM=matchMedia('(prefers-reduced-motion: reduce)').matches,B=document.body;
+const mul=a=>()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+/* --- шапочки на персонажах фона (координаты в пикселях картинки 1920x1080) --- */
+const HATS=[[425,161,100,-6],[551,161,85,4],[675,92,110,-10],[930,82,110,0],[1210,92,95,6],[1461,204,80,-5],[1290,236,80,8],[1193,314,125,6],[617,306,125,-6],[345,298,95,-8],[442,301,90,6],[448,490,95,-4],[301,702,105,-8],[1451,442,85,6],[1437,659,130,5]];
+const hatSVG='<svg viewBox="0 0 100 90" width="100%" height="100%"><path d="M12 68C16 34 40 10 72 10C66 24 74 46 90 68Z" fill="#d62828"/><path d="M12 68C16 36 36 14 62 11C54 30 58 52 66 68Z" fill="#a31d1d" opacity=".5"/><circle cx="76" cy="12" r="10" fill="#fff"/><rect x="6" y="60" width="88" height="22" rx="11" fill="#fff"/><rect x="6" y="74" width="88" height="8" rx="4" fill="#dfe6ee" opacity=".7"/></svg>';
+const hl=document.createElement('div');hl.setAttribute('aria-hidden','true');hl.style.cssText='position:fixed;inset:0;overflow:hidden;z-index:-1;pointer-events:none';
+const hats=HATS.map(()=>{const d=document.createElement('div');d.className='xh';d.innerHTML=hatSVG;hl.appendChild(d);return d});B.appendChild(hl);
+function place(){const W=innerWidth,H=innerHeight,s=Math.max(W/1920,H/1080),ox=(W-1920*s)/2;
+HATS.forEach((h,i)=>{const z=h[2]*s,X=ox+h[0]*s,Y=h[1]*s,f=Y/H,a=f<.55?.45+.33*f/.55:.78+.1*(f-.55)/.45;
+hats[i].style.cssText=`left:${X-z/2}px;top:${Y-z*.5}px;width:${z}px;height:${z*.9}px;transform:rotate(${h[3]}deg);filter:brightness(${(1.2-a).toFixed(2)})`})}
+/* --- ёлочные гирлянды по краям, со снегом на лапах --- */
+const gl=[0,1].map(i=>{const d=document.createElement('div');d.className='xg'+(i?' r':'');d.setAttribute('aria-hidden','true');B.appendChild(d);return d});
+function garland(el,seed){
+const W=innerWidth,H=innerHeight,gw=W<700?18:Math.round(Math.max(30,Math.min(W*.085,118))),r=mul(seed),ph=r()*6,wl=Math.max(160,H/5),f=n=>n.toFixed(1);
+const sp=y=>gw*.2+Math.sin(y/wl*6.283+ph)*gw*.13,S=['','',''];let main='',sn='',sh='',bz='',lg='',k=0;
+const BC=['#e63946','#ffd23f','#4aa8ff','#c77dff','#f4f4f4'],LC=['#ff5252','#ffd23f','#4ade80','#5ab8ff','#ff8ae2'];
+for(let y=-12;y<H+30;y+=gw*.26+r()*gw*.1,k++){
+const ox=sp(y),L=gw*(.5+r()*.5),ex=ox+L,ey=y+L*(.22+r()*.35),cx=ox+L*.55,cy=y-L*.05;
+const P=t=>{const u=1-t;return[u*u*ox+2*u*t*cx+t*t*ex,u*u*y+2*u*t*cy+t*t*ey]};
+const T=t=>{const u=1-t,dx=2*u*(cx-ox)+2*t*(ex-cx),dy=2*u*(cy-y)+2*t*(ey-cy),n=Math.hypot(dx,dy)||1;return[dx/n,dy/n]};
+main+=`M${f(ox)} ${f(y)}Q${f(cx)} ${f(cy)} ${f(ex)} ${f(ey)}`;
+for(let t=.08;t<=1.001;t+=.075){const[px,py]=P(t),[tx,ty]=T(t),n=gw*.14*(1-t*.45)+2.5,c=Math.cos(.75),s=Math.sin(.75),i=r()*3|0;
+for(const g of[-1,1])S[i]+=`M${f(px)} ${f(py)}l${f(n*(tx*c-g*ty*s))} ${f(n*(g*tx*s+ty*c))}`}
+if(r()<.72){const a=.1+r()*.12,b=.55+r()*.3,w=gw*.04+1.5;let d1='',d2='';
+for(let t=a;t<=b;t+=.07){const[px,py]=P(t);d1+=(d1?'L':'M')+f(px)+' '+f(py-w*.55);d2+=(d2?'L':'M')+f(px)+' '+f(py-w*.55+1.3)}
+sh+=d2;sn+=d1}
+if(k%5==2){const[px,py]=P(.97),rr=gw*.04+2.6,c=BC[r()*5|0];bz+=`<circle cx="${f(px)}" cy="${f(py+rr+1)}" r="${f(rr)}" fill="${c}"/><circle cx="${f(px-rr*.3)}" cy="${f(py+rr*.6)}" r="${f(rr*.28)}" fill="#fff" opacity=".7"/>`}}
+let sd='',lk=0;for(let y=-12;y<H+20;y+=10)sd+=(sd?'L':'M')+f(sp(y))+' '+y;
+for(let y=18;y<H;y+=gw*.5+16,lk++){const g=2.4+gw*.012,c=LC[lk%5];lg+=`<g class="xl ${'abcd'[lk%4]}" style="color:${c}"><circle cx="${f(sp(y))}" cy="${y}" r="${f(g*2.3)}" fill="currentColor" opacity=".28"/><circle cx="${f(sp(y))}" cy="${y}" r="${f(g)}" fill="currentColor"/></g>`}
+const nw=Math.max(1.7,gw*.028);
+el.style.width=gw+'px';
+el.innerHTML=`<svg width="${gw}" height="${H}" viewBox="0 0 ${gw} ${H}"><g fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="${sd}" stroke="#0e4a2a" stroke-width="${f(gw*.1)}"/><path d="${sd}" stroke="#25995a" stroke-width="${f(gw*.045)}" stroke-dasharray="2 5"/><path d="${main}" stroke="#0c4026" stroke-width="${f(gw*.05)}"/><path d="${S[0]}" stroke="#0f5a30" stroke-width="${f(nw)}"/><path d="${S[1]}" stroke="#1b7a42" stroke-width="${f(nw)}"/><path d="${S[2]}" stroke="#36a65b" stroke-width="${f(nw)}"/><path d="${sh}" stroke="#b9d3ef" stroke-width="${f(gw*.04+1.5)}"/><path d="${sn}" stroke="#fff" stroke-width="${f(gw*.04+1.5)}"/></g>${bz}${lg}</svg>`}
+function build(){place();garland(gl[0],3);garland(gl[1],11)}
+build();let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{build();size()},150)});
+if(RM)return;
+/* --- снег (поверх страницы) и салюты (за страницей) --- */
+const mk=z=>{const c=document.createElement('canvas');c.setAttribute('aria-hidden','true');c.style.cssText=`position:fixed;left:0;top:0;width:100%;height:100%;z-index:${z};pointer-events:none`;B.appendChild(c);return c};
+const fc=mk(-1),sc=mk(3),fx=fc.getContext('2d'),sx=sc.getContext('2d');
+let W=0,H=0,dp=1,fl=[],rk=[],pt=[],last=0,raf=0,nxt=1.5,act=0;
+const flake=init=>{const r=.7+R()*2.3;return{x:R()*W,y:init?R()*H:-8,r,vy:16+r*13+R()*16,sw:R()*6.28,sf:.4+R()*.9,sa:6+R()*14,a:.35+R()*.55}};
+function size(){dp=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;for(const c of[fc,sc]){c.width=W*dp;c.height=H*dp}
+fx.setTransform(dp,0,0,dp,0,0);sx.setTransform(dp,0,0,dp,0,0);const n=Math.min(140,Math.round(W/11));while(fl.length<n)fl.push(flake(true));fl.length=n}
+size();
+function launch(){rk.push({x:W*(.12+R()*.76),y:H+8,vx:(R()-.5)*30,vy:-(H*.55+R()*H*.25),ty:H*(.12+R()*.3),h:R()*360})}
+function boom(x,y,h){const n=60+(R()*50|0),ring=R()<.5,sp=190+R()*150,h2=h+120+R()*120;
+for(let i=0;i<n;i++){const a=ring?i/n*6.283:R()*6.283,v=ring?sp:sp*Math.sqrt(R()),hh=R()<.35?h2:h;
+pt.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,l:1,d:.38+R()*.4,c:`hsl(${hh+R()*30},100%,${60+R()*15}%)`})}}
+function loop(t){const dt=Math.min(.05,(t-last)/1000||0);last=t;
+sx.clearRect(0,0,W,H);sx.fillStyle='#fff';
+for(const p of fl){p.y+=p.vy*dt;p.sw+=p.sf*dt;p.x+=(Math.cos(p.sw)*p.sa+7)*dt;
+if(p.y>H+8||p.x>W+10){Object.assign(p,flake(false));p.x=R()*W*1.1-W*.1}
+sx.globalAlpha=p.a;sx.beginPath();sx.arc(p.x,p.y,p.r,0,6.283);sx.fill()}
+nxt-=dt;if(nxt<=0){launch();if(R()<.25)setTimeout(launch,350);nxt=2.5+R()*4.5}
+for(const q of rk){q.y+=q.vy*dt;q.x+=q.vx*dt;if(q.y<=q.ty){q.dead=1;boom(q.x,q.y,q.h)}}
+rk=rk.filter(q=>!q.dead);
+for(const p of pt){const k=1-1.1*dt;p.vx*=k;p.vy=p.vy*k+85*dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.l-=p.d*dt*.9}
+pt=pt.filter(p=>p.l>0);
+if(rk.length||pt.length){act=1;fx.globalCompositeOperation='destination-out';fx.fillStyle='rgba(0,0,0,.2)';fx.fillRect(0,0,W,H);fx.globalCompositeOperation='lighter';
+fx.globalAlpha=1;fx.fillStyle='#ffe9a8';for(const q of rk){fx.beginPath();fx.arc(q.x,q.y,2,0,6.283);fx.fill()}
+for(const p of pt){fx.globalAlpha=Math.max(0,p.l);fx.fillStyle=p.c;fx.beginPath();fx.arc(p.x,p.y,1.5+p.l*1.6,0,6.283);fx.fill()}
+fx.globalCompositeOperation='source-over'}else if(act){fx.clearRect(0,0,W,H);act=0}
 raf=requestAnimationFrame(loop)}
-size();addEventListener('resize',size);
 document.addEventListener('visibilitychange',()=>{cancelAnimationFrame(raf);if(!document.hidden){last=performance.now();raf=requestAnimationFrame(loop)}});
 raf=requestAnimationFrame(loop);
 })();
 </script>
+
 </body></html>
